@@ -5,6 +5,10 @@ const config = {
 };
 
 class Auth {
+  hash(password, salt) {
+    return this.hashPbkdf2(password, salt);
+  }
+
   hashPbkdf2(password, salt) {
     const iterations = 10000;
     const keylen = 32;
@@ -14,12 +18,7 @@ class Auth {
   }
 }
 
-const test = () => {
-  const logger = console;
-  const match = 'l2HmlzzR+JNfLXnw6I+/XCN8UUL0DDoL/X3R5WLmxDg=';
-  const password = 'my password';
-  const secret = new Auth().hashPbkdf2(password);
-  logger.info({ secret, match: secret === match });
+module.exports = {
+  Auth,
+  auth: new Auth(),
 };
-
-test();
