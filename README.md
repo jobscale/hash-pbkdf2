@@ -20,7 +20,7 @@ logger.info({ hash });
 ## lint
 
 ```
-npm run lint
+npm run lint --if-present
 ```
 
 ## test
