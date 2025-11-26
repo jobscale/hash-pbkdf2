@@ -1,10 +1,10 @@
-const pbkdf2 = require('pbkdf2');
+import pbkdf2 from 'pbkdf2';
 
 const config = {
   salt: 'my salt',
 };
 
-class Auth {
+export class Auth {
   hash(password, salt) {
     return this.hashPbkdf2(password, salt);
   }
@@ -18,7 +18,5 @@ class Auth {
   }
 }
 
-module.exports = {
-  Auth,
-  auth: new Auth(),
-};
+export const auth = new Auth();
+export default { Auth, auth };
